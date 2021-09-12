@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<br clear="all" > <br clear="all" >
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h3>Lista de usuarios </h3>
+    <br clear="all">
+    <table id="table_perms" class="display">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Código</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in perms %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.codename }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}

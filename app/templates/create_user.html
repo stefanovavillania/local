@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if initial %}
+  <form class="" action="{% url 'user_update' id %}" method="post">
+{% else %}
+  <form class="" action="{% url 'user_add' %}" method="post">
+{% endif %}
+
+  {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock content %}

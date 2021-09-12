@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<br clear="all" > <br clear="all" >
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h3>Lista de usuarios </h3>
+    <br clear="all">
+    <table id="table_users" class="display">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Correo</th>
+          <th>Es superusuario?</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in users %}
+        <tr>
+            <td>{{ i.username }}</td>
+            <td>{{ i.first_name }}</td>
+            <td>{{ i.last_name }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.is_superuser }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="{% url 'user_update' i.id %}" class="btn btn-outline-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="{% url 'user_delete' i.id %}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              </div>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
