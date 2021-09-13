@@ -6,9 +6,9 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 import requests
-from .forms import UserForm, PermissionForm
+from .forms import UserForm
 
-base_url = 'http://127.0.0.1:8000/nube/{}'
+base_url = 'https://stefanova-nube.herokuapp.com/nube/{}'
 def send_request(method, url, params):
     if method == 'GET':
         response = requests.get(url, params=params)
@@ -61,12 +61,11 @@ class UserCreateView(LoginRequiredMixin, View):
                 'first_name': request.POST.get('first_name'),
                 'last_name': request.POST.get('last_name'),
                 'email': request.POST.get('email'),
-                'password': request.POST.get('password'),
-                'is_superuser': request.POST.get('is_superuser')}
+                'password': request.POST.get('password')}
             data = send_request('POST', base_url.format('users/create/'), dict_req)
             return HttpResponseRedirect(reverse('user_list'))
         else:
-            return render(request, template, {'form': form, 'initial': False})
+            return render(request, self.    template, {'form': form, 'initial': False})
 
 
 class UserUpdateView(LoginRequiredMixin, View):
@@ -87,13 +86,12 @@ class UserUpdateView(LoginRequiredMixin, View):
                 'first_name': request.POST.get('first_name'),
                 'last_name': request.POST.get('last_name'),
                 'email': request.POST.get('email'),
-                'password': request.POST.get('password'),
-                'is_superuser': request.POST.get('is_superuser')}
+                'password': request.POST.get('password')}
             data = send_request('POST', base_url.format('users/update/{}/'.format(id)), dict_req)
             # messages.success(request, 'propietario actualizado correctamente')
             return HttpResponseRedirect(reverse('user_list'))
         else:
-            return render(request, template, {'form': form, 'initial': True})
+            return render(request, self.template, {'form': form, 'initial': True})
 
 class UserDeleteView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):

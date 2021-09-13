@@ -10,7 +10,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-primary">
-      <a class="navbar-brand" href="{% url 'index' %}">Local</a>
+      <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Local</a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
    </button>
@@ -18,12 +18,13 @@
   {% block content %}
   <br clear="all"><br clear="all">
     <div class="row">
+      <div class="col-sm-1"></div>
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Usuarios</h5>
-            <p class="card-text"></p>
-            <a href="{% url 'user_add' %}" class="btn btn-primary">+</a> <a href="{% url 'user_list' %}" class="btn btn-primary">list</a>
+            <h5 class="card-title">Administración de usuarios</h5>
+            <p class="card-text" style="text-align: center;"><i class="fa fa-child fa-5x " aria-hidden="true"></i></p>
+            <a href="{% url 'user_add' %}" class="btn btn-outline-success"><i class="fa fa-plus fa-pulse" aria-hidden="true"></i></a> <a href="{% url 'user_list' %}" class="btn btn-outline-primary"><i class="fa fa-list" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
